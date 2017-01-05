@@ -64,9 +64,10 @@ public class IntAdder {
 }
 
 class IntAddTask extends RecursiveTask<Long> {
-    private List<Integer> list;
+    private final List<Integer> list;
 
     IntAddTask(List<Integer> list) {
+        super();
         this.list = list;
     }
 
