@@ -23,34 +23,34 @@ public class IntAdder {
         long stop;
 
         // Iterate
-        start = System.nanoTime();
+        start = System.currentTimeMillis();
         for(int i = 0; i < 10000; i++)
             sum = iterate(list);
-        stop = System.nanoTime();
+        stop = System.currentTimeMillis();
         System.out.println("Iterate time:\t\t\t" + (stop - start));
         System.out.println("Answer: " + sum);
 
         // Fork Join
-        start = System.nanoTime();
+        start = System.currentTimeMillis();
         for(int i = 0; i < 10000; i++)
             sum = forkJoinPool.invoke(new IntAddTask(list));
-        stop = System.nanoTime();
+        stop = System.currentTimeMillis();
         System.out.println("Fork Join time:\t\t\t" + (stop - start));
         System.out.println("Answer: " + sum);
 
         // Stream
-        start = System.nanoTime();
+        start = System.currentTimeMillis();
         for(int i = 0; i < 10000; i++)
             sum = list.stream().mapToLong(Integer::intValue).sum();
-        stop = System.nanoTime();
+        stop = System.currentTimeMillis();
         System.out.println("Stream time:\t\t\t" + (stop - start));
         System.out.println("Answer: " + sum);
 
         // Parallel Stream
-        start = System.nanoTime();
+        start = System.currentTimeMillis();
         for(int i = 0; i < 10000; i++)
             sum = list.parallelStream().mapToLong(Integer::intValue).sum();
-        stop = System.nanoTime();
+        stop = System.currentTimeMillis();
         System.out.println("Parallel Stream time:\t" + (stop - start));
         System.out.println("Answer: " + sum);
     }
